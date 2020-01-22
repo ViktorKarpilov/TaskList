@@ -5,19 +5,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { TaskComponent } from './task/task.component';
+import { TaskListComponent } from './Pages/TaskPage/task-list/task-list.component';
+import { TaskComponent } from './Pages/TaskPage/task/task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
     FetchDataComponent,
     TaskListComponent,
     TaskComponent
@@ -27,8 +21,6 @@ import { TaskComponent } from './task/task.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
