@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using TaskListT.Models;
 
 namespace TaskListT.Context{
-    public class TasksContext:DbContext{
+    public class TodoListContext:DbContext{
         DbSet<Task> Tasks;
-        public TasksContext(){
+        public TodoListContext(){
 
         }
 

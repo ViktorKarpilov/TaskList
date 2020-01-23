@@ -30,10 +30,10 @@ namespace TaskListT
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            string conn = Configuration.GetConnectionString("TasksConnection");
+            string conn = Configuration.GetConnectionString("TodoListConnection");
             services
             .AddEntityFrameworkSqlServer()
-            .AddDbContext<TasksContext>(( serviceProvider, options) =>
+            .AddDbContext<TodoListContext>(( serviceProvider, options) =>
                                 options.SqlServer(conn)
                                 .UseInternalServiceProvider(serviceProvider));
         }
