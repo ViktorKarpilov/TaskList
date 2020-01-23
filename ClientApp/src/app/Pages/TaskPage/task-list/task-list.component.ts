@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {TaskList} from "src/Models/TaskList";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-list',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  public tasklist:TaskList[];
+  private url = Inject('BASE_URL')+'example';
 
-  constructor() { }
+  constructor(http: HttpClient) {
+    http.get<TaskList[]>(this.url).subscribe(res => this.tasklist=res,error => console.error(error));
+   }
 
   ngOnInit() {
   }
