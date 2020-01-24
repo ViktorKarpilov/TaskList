@@ -24,18 +24,21 @@ namespace TaskListT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configurationSection = Configuration.GetSection("ConnectionStrings:TodoListConnection");
+            services.AddDbContext<TodoListContext>(options => options.UseSqlServer(configurationSection.Value));
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            string conn = Configuration.GetConnectionString("TodoListConnection");
+            /*string conn = Configuration.GetConnectionString("TodoListConnection");
             services
             .AddEntityFrameworkSqlServer()
             .AddDbContext<TodoListContext>(( serviceProvider, options) =>
                                 options.SqlServer(conn)
-                                .UseInternalServiceProvider(serviceProvider));
+                                .UseInternalServiceProvider(serviceProvider));*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
