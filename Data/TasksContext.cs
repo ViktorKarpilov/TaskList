@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using TaskListT.Models;
 
-namespace TaskListT.Context{
-    public class TasksContext:DbContext{
+namespace TaskListT.Context
+{
+    public class TodoListContext:DbContext{
         DbSet<Task> Tasks;
-        public TasksContext(){
+        public TodoListContext(DbContextOptions<TodoListContext> options):base(options){
 
         }
 
