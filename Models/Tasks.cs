@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskListT.Models{
     public class Task{
+        [Key]
         int Id{get;set;}
         string name{get;set;}
         string description{get;set;}
@@ -16,6 +18,8 @@ namespace TaskListT.Models{
 
     }
     public class TaskList{
+        [Key]
+        int Id{get;set;}
         string name{get;set;}
         IEnumerable<int> tasksId{get;set;}
     }

@@ -18,7 +18,11 @@ namespace TaskListT.Controllers
         [HttpGet("api/getLists")]
         public int GetUserLists(){
             return 1;
-        }        
+        }
+
+        public StatusCodeResult PostTask(Task task){
+            return StatusCode(302);
+        }
         [HttpGet]
         public string Get(){
             return "works!";
