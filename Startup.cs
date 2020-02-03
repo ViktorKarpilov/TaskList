@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskListT.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace TaskListT
@@ -24,17 +25,17 @@ namespace TaskListT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration["Production:SqliteConnectionString"];
+            //var connection = Configuration["Production:SqliteConnectionString"];
 
             services.AddDbContext<TodoListContext>(options =>
-                options.UseSqlite(connection)
+                options.UseSqlite(Configuration.GetConnectionString("TasksDB"))
             );
 
-            //SqlServer
-            /*
-            var configurationSection = Configuration.GetSection("ConnectionStrings:TodoListConnection");
-            services.AddDbContext<TodoListContext>(options => options.UseSqlite(configurationSection.Value));
-            */
+            services.AddDbContext<UsersContext>(options =>
+             options.UseSqlite(Configuration.GetConnectionString("UsersDB"))
+            );
+            services.AddIdentity<IdentityUser,IdentityRole>()
+            .AddEntityFrameworkStores<UsersContext>();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
