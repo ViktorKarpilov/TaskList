@@ -1,1 +1,17 @@
 <p>registration works!</p>
+<form #regForm="ngForm" action="" method="post" (ngSubmit)="onSubmit(regForm)">
+    <label >Username:</label>
+    <input type="text" placeholder="Username" name="Usename" required [(ngModel)]="user.username" #username="ngModel">
+    <label>Company:</label>
+    <input type="text" name="company" [(ngModel)]="user.company" #company="ngModel" required>
+    <label>email:</label>
+    <input type="email" name="email" [(ngModel)]="user.email" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel">
+    <label>Password:</label>
+    <input type="password" name="password" [(ngModel)]="user.password" required pattern="[a-zA-Z0-9._%+-]{8,20}" #password="ngModel">
+    <div class="erorMessage" [hidden]="username.valid||username.untouched">Invalid Username</div>
+    <div class="erorMessage"[hidden]="email.valid||email.untouched" >Invalid email</div>
+    <div class="erorMessage"[hidden]="company.valid||company.untouched">Company name require</div>
+    <div class="erorMessage"[hidden]="password.valid||password.untouched">Invalid password</div>
+
+    <input type="submit" value="submit"> 
+</form>
