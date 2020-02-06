@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskListT.Models
 {
     public class User : IdentityUser
     {
-        public string CompanyName {get; set;} //TODO complete bd 
-        public int NumberComplitedTasks { get; set; }
+        [Required]
+        private int CompanyName {get; set;} //TODO complete bd 
+        private int NumberComplitedTasks { get; set; }
     }
 }

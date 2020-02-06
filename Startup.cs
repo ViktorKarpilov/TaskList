@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using TaskListT.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using TaskListT.Models;
 
 
 namespace TaskListT
@@ -34,7 +35,11 @@ namespace TaskListT
             services.AddDbContext<UsersContext>(options =>
              options.UseSqlite(Configuration.GetConnectionString("UsersDB"))
             );
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddDbContext<CompanyContext>(options => 
+            options.UseSqlite(Configuration.GetConnectionString("CompaniesDB"))
+            );
+
+            services.AddIdentity<User,IdentityRole>()
             .AddEntityFrameworkStores<UsersContext>();
 
             services.AddControllersWithViews();
@@ -43,12 +48,7 @@ namespace TaskListT
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            /*string conn = Configuration.GetConnectionString("TodoListConnection");
-            services
-            .AddEntityFrameworkSqlServer()
-            .AddDbContext<TodoListContext>(( serviceProvider, options) =>
-                                options.SqlServer(conn)
-                                .UseInternalServiceProvider(serviceProvider));*/
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

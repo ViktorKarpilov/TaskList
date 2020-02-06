@@ -5,7 +5,7 @@ using System;
 
 namespace TaskListT.Context
 {
-    public class UsersContext:IdentityDbContext{
+    public class UsersContext:IdentityDbContext<User>{
         public UsersContext(DbContextOptions<UsersContext> options):base(options){
             Database.EnsureCreated();
         }
