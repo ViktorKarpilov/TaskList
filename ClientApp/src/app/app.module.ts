@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TaskListComponent } from './Pages/TaskPage/task-list/task-list.component';
 import { TaskComponent } from './Pages/TaskPage/task/task.component';
+import { MainComponent } from './Pages/Main/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FetchDataComponent,
     TaskListComponent,
-    TaskComponent
+    TaskComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

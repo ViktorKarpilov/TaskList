@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskListT.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using TaskListT.Models;
 
 
 namespace TaskListT
@@ -24,17 +26,21 @@ namespace TaskListT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration["Production:SqliteConnectionString"];
+            //var connection = Configuration["Production:SqliteConnectionString"];
 
             services.AddDbContext<TodoListContext>(options =>
-                options.UseSqlite(connection)
+                options.UseSqlite(Configuration.GetConnectionString("TasksDB"))
             );
 
-            //SqlServer
-            /*
-            var configurationSection = Configuration.GetSection("ConnectionStrings:TodoListConnection");
-            services.AddDbContext<TodoListContext>(options => options.UseSqlite(configurationSection.Value));
-            */
+            services.AddDbContext<UsersContext>(options =>
+             options.UseSqlite(Configuration.GetConnectionString("UsersDB"))
+            );
+            services.AddDbContext<CompanyContext>(options => 
+            options.UseSqlite(Configuration.GetConnectionString("CompaniesDB"))
+            );
+
+            services.AddIdentity<User,IdentityRole>()
+            .AddEntityFrameworkStores<UsersContext>();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -42,12 +48,7 @@ namespace TaskListT
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            /*string conn = Configuration.GetConnectionString("TodoListConnection");
-            services
-            .AddEntityFrameworkSqlServer()
-            .AddDbContext<TodoListContext>(( serviceProvider, options) =>
-                                options.SqlServer(conn)
-                                .UseInternalServiceProvider(serviceProvider));*/
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
