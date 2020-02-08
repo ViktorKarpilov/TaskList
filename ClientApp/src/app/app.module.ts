@@ -34,6 +34,7 @@ import { IdentityComponent } from './identity/identity/identity.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'reg', component: RegistrationComponent},
       { path: 'login', component: IdentityComponent},
+      { path: 'identity', component: IdentityComponent },
     ])
   ],
   providers: [],

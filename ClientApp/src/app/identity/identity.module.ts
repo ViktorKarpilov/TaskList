@@ -5,16 +5,22 @@ import { RegistrationComponent } from './Registration/registration/registration.
 import { IdentityComponent } from './identity/identity.component';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
 
 
 
 
 @NgModule({
-  declarations: [ RegistrationComponent, IdentityComponent],
+  declarations: [ RegistrationComponent, IdentityComponent, LoginComponent],
   imports: [
     HttpClientModule,
     CommonModule,
     FormsModule,
+    RouterModule.forChild([
+      { path: 'reg', component: RegistrationComponent },
+      { path: 'login', component: LoginComponent },
+    ])
   ],
   exports: [IdentityComponent]
 })
