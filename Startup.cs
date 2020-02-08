@@ -10,6 +10,7 @@ using TaskListT.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using TaskListT.Models;
+using TaskListT.Middlware;
 
 
 namespace TaskListT
@@ -42,6 +43,9 @@ namespace TaskListT
             services.AddIdentity<User,IdentityRole>()
             .AddEntityFrameworkStores<UsersContext>();
 
+            //services.AddSingleton<requestReader>();
+            
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -64,7 +68,6 @@ namespace TaskListT
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())

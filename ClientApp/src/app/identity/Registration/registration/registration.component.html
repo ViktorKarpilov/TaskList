@@ -1,5 +1,5 @@
 <p>registration works!</p>
-<form #regForm="ngForm" action="" method="post" (ngSubmit)="onSubmit(regForm)">
+<form #regForm="ngForm" action="" method="post" (ngSubmit)="submitForm()">
     <label >Username:</label>
     <input type="text" placeholder="Username" name="Usename" required [(ngModel)]="user.username" #username="ngModel">
     <label>Company:</label>

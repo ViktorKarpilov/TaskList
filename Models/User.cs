@@ -5,8 +5,14 @@ namespace TaskListT.Models
 {
     public class User : IdentityUser
     {
-        [Required]
-        private int CompanyName {get; set;} //TODO complete bd 
-        private int NumberComplitedTasks { get; set; }
+        private string email {get;set;}
+        //[Required]
+        //private int CompanyName {get; set;} //TODO complete bd 
+        private int NumberComplitedTasks { get; set; } = 0;
+
+        /*public User(string email){
+            this.email = email;
+            
+        }*/
     }
 }

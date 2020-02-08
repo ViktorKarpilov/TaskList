@@ -3,7 +3,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 
 namespace TaskListT.Models{
-    public class Task{
+    public class TODO{
         [Key]
         int Id{get;set;}
         string name{get;set;}
