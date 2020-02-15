@@ -61,6 +61,16 @@ namespace TaskListT.Controllers
             }
             return StatusCode(500);
         }
+
+        [HttpPost]
+        [Route("userLogin")]
+        public async Task<StatusCodeResult> UserLogn(string username,string password){
+            var res = await _signInManager.PasswordSignInAsync(username,password,false,false);
+            if(res.Succeeded){
+                return StatusCode(200);
+            }
+            return StatusCode(401);
+        }
     }
 }
 

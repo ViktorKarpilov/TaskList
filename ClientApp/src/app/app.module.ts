@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
@@ -13,7 +13,18 @@ import { IdentityModule } from './identity/identity.module';
 import { HeaderComponent } from './Header/header/header.component';
 import { RegistrationComponent } from './identity/Registration/registration/registration.component';
 import { IdentityComponent } from './identity/identity/identity.component';
+import { LoginComponent } from './identity/login/login.component';
 
+const identityRoutes:Routes = [
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
+]
+
+const mainRouts: Routes = [
+  { path: 'main', component: MainComponent },
+  { path: 'fetch-data', component: FetchDataComponent },
+  { path: 'identity', component: IdentityComponent,children:identityRoutes },
+]
 
 @NgModule({
   declarations: [
@@ -29,13 +40,7 @@ import { IdentityComponent } from './identity/identity/identity.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'main',component:MainComponent},
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'reg', component: RegistrationComponent},
-      { path: 'login', component: IdentityComponent},
-      { path: 'identity', component: IdentityComponent },
-    ])
+    RouterModule.forRoot(mainRouts)
   ],
   providers: [],
   bootstrap: [AppComponent]

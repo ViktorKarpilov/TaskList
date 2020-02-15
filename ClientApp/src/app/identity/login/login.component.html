@@ -1,1 +1,10 @@
 
+<form #loginForm="ngForm" (onSubmit)="modelSend()" method="POST">
+    <label>Username</label>
+    <input type="text" placeholder="Username" name="Usename" required [(ngModel)]="user.username" #username="ngModel">
+    <label>Password</label>
+    <input type="text" [(ngModel)]="user.password" name="Password" required pattern="[a-zA-Z0-9._%+-]{8,20}" #password="ngModel">
+    <input type="submit" value="Submit">
+    <div class="erorMessage" [hidden]="username.valid||username.untouched">Invalid Username</div>
+    <div class="erorMessage" [hidden]="password.valid||password.untouched">Invalid Password</div>
+</form>

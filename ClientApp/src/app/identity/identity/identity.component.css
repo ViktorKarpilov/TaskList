@@ -1,0 +1,12 @@
+input{
+    border-radius: 5px;
+}
+form{
+    margin: auto;
+    max-width:400pt ;
+    display: flex;
+    flex-direction: column;
+}
+.erorMessage{
+    color:red;
+}
