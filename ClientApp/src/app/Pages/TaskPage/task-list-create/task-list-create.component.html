@@ -1,0 +1,8 @@
+<p>task-list-create works!</p>
+<form #ListCreate="ngForm" method="POST" (ngSubmit)="CreateList()">
+    <input type="text" name="Title" value="List.Title" [(ngModel)]="List.Title" #ListTitle="ngModel" required pattern="[a-zA-Z0-9]{8,20}">
+    <input type="text" name="Description" [(ngModel)]="List.Description" #ListDescription="ngModel" >
+    <div [hidden]="ListTitle.valid||ListTitle.untouched" > Test {{ListTitle.valid}}</div>
+    <input type="submit" value="Submit">
+
+</form>

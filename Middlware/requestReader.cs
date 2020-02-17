@@ -10,9 +10,9 @@ namespace TaskListT.Middlware
         public requestReader(RequestDelegate next){
             this._next = next;
         }
-        public async Task InvokeAsync(HttpRequest request){
+        /*public async Task InvokeAsync(HttpRequest request){
             Console.WriteLine(request.Body);
-         /*   await _next.Invoke(request);*/
-        }
+            await _next.Invoke(request);
+        }*/
     }
 }

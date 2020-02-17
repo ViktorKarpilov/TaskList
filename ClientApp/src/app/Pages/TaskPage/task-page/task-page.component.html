@@ -1,0 +1,7 @@
+<p>task-page works!</p>
+<input type="text" name="test" [(ngModel)]="TaskListName"  #taskListName="ngModel">
+
+<a [routerLink]="[ './create']">Create</a>
+<a [routerLink]="[ './taskList', {name:TaskListName}]">TaskList  </a>
+
+<router-outlet></router-outlet>

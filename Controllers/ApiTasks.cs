@@ -9,6 +9,8 @@ namespace TaskListT.Controllers
     using System.Threading.Tasks;
     using System;
 
+    
+
     [ApiController]
     [Route("/api")]
     public class ApiTasks:Controller
@@ -64,13 +66,24 @@ namespace TaskListT.Controllers
 
         [HttpPost]
         [Route("userLogin")]
-        public async Task<StatusCodeResult> UserLogn(string username,string password){
+        public async Task<StatusCodeResult> UserLogn( string username,string password){
             var res = await _signInManager.PasswordSignInAsync(username,password,false,false);
             if(res.Succeeded){
                 return StatusCode(200);
             }
             return StatusCode(401);
         }
+
+
+        
+        [HttpPost]
+        [Route("createTaskList")]
+        public StatusCodeResult CreateTaskList([FromBody] TaskListPost post){
+            
+            return StatusCode(418);
+        }
     }
+    
+    
 }
 
