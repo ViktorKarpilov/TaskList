@@ -1,5 +1,6 @@
 namespace TaskListT.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     //using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace TaskListT.Controllers
 
         //[HttpGet]
         //[Route("api/test")]
+        [Authorize]
         public int GetUserLists(){
             return 1;
         }
@@ -80,6 +82,8 @@ namespace TaskListT.Controllers
         [Route("createTaskList")]
         public StatusCodeResult CreateTaskList([FromBody] TaskListPost post){
             
+            _todoContext.TaskLists.Add(new TaskList(post.Title));
+            _todoContext.SaveChanges();
             return StatusCode(418);
         }
     }

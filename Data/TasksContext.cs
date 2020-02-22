@@ -13,8 +13,8 @@ namespace TaskListT.Context
 
     }
     public class TodoListContext:DbContext{
-        DbSet<TODO> Tasks {get;set;}
-        DbSet<TaskList> TaskLists {get;set;}
+        public DbSet<TODO> Tasks {get;set;}
+        public DbSet<TaskList> TaskLists {get;set;}
         public TodoListContext(DbContextOptions<TodoListContext> options):base(options){
             Database.EnsureCreated();
         }

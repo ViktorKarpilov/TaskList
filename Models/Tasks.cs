@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace TaskListT.Models{
     public class TODO{
         [Key]
-        int Id{get;set;}
+        public int Id{get;set;}
         string name{get;set;}
         string description{get;set;}
         enum Status:short{
@@ -19,8 +19,22 @@ namespace TaskListT.Models{
     }
     public class TaskList{
         [Key]
-        int Id{get;set;}
-        string name{get;set;}
-        IEnumerable<int> tasksId{get;set;}
+        public int Id{get;set;}
+        public string name{get;set;}
+        
+        public IEnumerable<int> tasksId{get;set;} = null!;
+        
+        public TaskList(string name){
+            this.name=name;
+        }
+        public int AddTask(int taskId){
+            try{
+                this.tasksId.Append(taskId);
+                return 1;
+            }
+            catch{
+                return 0;
+            }
+        }
     }
 }
